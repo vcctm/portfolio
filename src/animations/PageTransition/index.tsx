@@ -1,5 +1,6 @@
 import { alpha, useTheme } from '@mui/material'
 import { motion } from 'framer-motion'
+import { useTablet } from 'hooks'
 
 interface IPageTransitionWrapper {
   children: React.ReactNode
@@ -7,6 +8,7 @@ interface IPageTransitionWrapper {
 
 export const PageTransitionWrapper = ({ children }: IPageTransitionWrapper) => {
   const theme = useTheme()
+  const isTablet = useTablet()
 
   return (
     <motion.div
@@ -25,8 +27,8 @@ export const PageTransitionWrapper = ({ children }: IPageTransitionWrapper) => {
         textAlign: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: '48px 96px',
-        width: '100%',
+        padding: isTablet ? 'unset' : '48px 96px',
+        width: isTablet ? 'unset' : '100%',
         borderRadius: '8px',
         backgroundColor: alpha(theme.palette.common.white, 0.01)
       }}>

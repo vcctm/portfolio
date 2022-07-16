@@ -3,6 +3,7 @@ import Header from 'components/Header'
 import { Wrapper } from './styles'
 
 import {AnimatePresence} from 'framer-motion'
+import { useTablet } from 'hooks'
 
 interface IPageRenderProps {
   children: React.ReactNode
@@ -10,6 +11,7 @@ interface IPageRenderProps {
 
 export const PageRender = ({ children }: IPageRenderProps) => {
   const theme = useTheme()
+  const isTablet = useTablet()
 
   return (
     <Wrapper>
@@ -40,7 +42,7 @@ export const PageRender = ({ children }: IPageRenderProps) => {
               flexGrow={1}
               display="flex"
               paddingY={4}
-              minWidth={600}
+              minWidth={isTablet ? 'unset' : 600}
             >
               {children}
             </Box>
