@@ -63,7 +63,7 @@ export const defaultThemeOptions = (themeMode: PaletteMode): ThemeOptions => ({
         ...(themeMode === 'light') ? {
             common: {
                 white: colors.gunmetal[800],
-                black: 'white'
+                black: colors.secondary[50]
             },
             primary: {
                 main: colors.primary[500],
