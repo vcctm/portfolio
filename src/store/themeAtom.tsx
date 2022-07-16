@@ -9,6 +9,9 @@ const localStorageEffect =
   (key: string): AtomEffect<ThemeMode> =>
   ({ setSelf, onSet }) => {
     const stored = getStorageItem(key)
+    if (!stored) {
+       setStorageItem('themeMode', 'light')
+    }
     if (stored === 'dark' || stored === 'light') {
       setSelf(stored)
     }
