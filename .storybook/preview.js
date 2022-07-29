@@ -18,26 +18,24 @@ import {
 } from '@mui/material/styles'
 import { ThemeProvider } from '@emotion/react'
 
-import {defaultThemeOptions} from '../src/styles/theme'
-import { useDarkMode } from 'storybook-dark-mode';
+import { defaultThemeOptions } from '../src/styles/theme'
+import { useDarkMode } from 'storybook-dark-mode'
 import { RecoilRoot } from 'recoil'
 
-
-function ThemeWrapper({children}) {
-  const actualTheme = createTheme(useDarkMode() ? defaultThemeOptions('dark') : defaultThemeOptions('light'))
+function ThemeWrapper({ children }) {
+  const actualTheme = createTheme(
+    useDarkMode() ? defaultThemeOptions('dark') : defaultThemeOptions('light')
+  )
   return (
     <MUIThemeProvider theme={actualTheme}>
-    <ThemeProvider theme={actualTheme}>{children}</ThemeProvider>
-  </MUIThemeProvider>
-  );
+      {children}
+    </MUIThemeProvider>
+  )
 }
-
 
 addDecorator((story) => (
   <RecoilRoot>
-    <ThemeWrapper>
-      {story()}
-    </ThemeWrapper>
+    <ThemeWrapper>{story()}</ThemeWrapper>
   </RecoilRoot>
 ))
 addDecorator(withRouter)
